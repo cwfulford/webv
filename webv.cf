@@ -1,0 +1,40 @@
+<pre>
+
+cl:
+	URI=www.doglin.com/awstats.html
+	min=340
+
+t4l:
+	URI=www.steam4trains.co.uk/awstats.html
+
+fc:
+	URI=www.fordnet.net/awstats.html
+
+fs:
+	URI=www.fltime.co.uk/awstats.html
+
+ai:
+	URI=www.interpret-tigrinya.com/awstats.html
+
+cw:
+	URI=www.citywindowsit.com/awstats.html
+
+wb:
+	URI=www.westbridgford.info/awstats.html
+
+######################################################################
+# This program is free software: you can redistribute it and or      #
+# modify it under the terms of the Lesser GNU General Public License #
+# as published by the Free Software Foundation, either version 3 of  #
+# the License, or (at your option) any later version.                #
+#                                                                    #
+# This program is distributed in the hope that it will be useful,    #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of     #    
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the      #
+# GNU General Public License for more details.                       #
+#                                                                    # 
+# A copy of the Lesser GNU General Public License and the GNU        #
+# General Public License is available at                             #
+# &#60;http://www.gnu.org/licenses/&#62;.                                    #
+######################################################################
+</pre>

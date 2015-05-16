@@ -1,0 +1,95 @@
+.TH WEBV 8l "27th March r1.78
+.SH NAME
+.B webv
+- reports the the number of unique visitors to a website on the day it is
+invoked.
+.SH SYNOPSIS
+\fBwebv\fR
+[\fB-c \fI<config_file>\fR]
+[\fB-d\fR]
+[\fB-v \fR]
+[\fIconfig_id>\fR]|\fB-V\fR
+.br
+.SH AVAILABILITY
+.B webv
+is a Bourne/Bash shell script which should work equally well on all versions of UNIX,
+Linux and Mac OS X.
+.SH DESCRIPTION
+.B webv
+uses  the configuration id as a lookup key to the configuration file
+.I /usr/local/etc/webv.cf
+and finds the URI of an
+.B awstats
+report on a remote web server. 
+The 
+.B URI
+is used by 
+.B wget
+to fetch the report and put it on a pipe to an
+.B awk 
+script which extracts the required data item and performs
+a calculation  of the average number of visitors per hour in the current
+month and the total number of unique visitors predicted by the month end.
+.LP
+The script was written to monitor a number of websites where changes were 
+being made and checking the impact of the changes by inspection was becoming
+rather too time consuming.
+.SH OPTIONS
+.TP 5
+.B -c
+Use the specified configuration file in preference to the default
+\fI"/usr/local/etc/webv.cf"\fR.
+If no configuration file is found the 
+script will terminate with an error message. 
+.TP 5
+.B -d
+Set debug mode on. 
+The \fB-x\fR option is set within the shell
+and each command in the script is echoed to the console.
+.TP 5
+.B -v
+The usual output is just the 3 numbers repesenting the total number of
+unique visitors so far in the month, the daily average and the
+predicted outturn. With the \fB-v\fR option the output is formated and 
+labled. This is particularly useful when used with cron to report on a 
+number of different sites.
+.TP 5
+<\fIconfig_id\fR>
+The configuration identity is the key to the stanza in the configuration
+file which will be used to determine the required \fBURI\fR for the stats
+report.
+.TP 5
+.B -V
+Print version details and exit.
+.SH FILES
+.IR webv.cf .
+.SH EXAMPLES
+.IP
+.ft CW
+for key in  ai cl fc fs  t4l;do
+	webv -v $key
+done
+.ft R
+.LP
+Each id is looked up in the default configuration file
+\fI/usr/local/etc/webv.cf\fR. Using the \fBURI\fR found the script
+fetches the awstats report, extracts the number of unique visitors for
+the day, calculates the daily average for the month and the predicted outturn
+at the month end. E.g.
+.IP
+.nf
+.ft CW
+  ai 	- Visitors so far:  81  Ave:  8  Prediction: 251
+  cl 	- Visitors so far: 141  Ave: 14  Prediction: 437
+  fc 	- Visitors so far:  80  Ave:  8  Prediction: 248
+  fs 	- Visitors so far:  26  Ave:  3  Prediction:  81
+ t4l 	- Visitors so far: 139  Ave: 14  Prediction: 431
+.br
+.SH BUGS
+The script is quite crude and has very little, if any,  error checking.
+The consequences of unexpected input are untested.
+.SH SEE ALSO
+.IR webupd .
+.SH AUTHOR
+Clifford W Fulford, City Linux. Contact fulford@fulford.net or +44 (0)709 229 5385.
+.SH HISTORY
