@@ -83,7 +83,8 @@ at the month end. E.g.
   fc 	- Visitors so far:  80  Ave:  8  Prediction: 248
   fs 	- Visitors so far:  26  Ave:  3  Prediction:  81
  t4l 	- Visitors so far: 139  Ave: 14  Prediction: 431
-.br
+.ft R
+.fi
 .SH BUGS
 The script is quite crude and has very little, if any,  error checking.
 The consequences of unexpected input are untested.
