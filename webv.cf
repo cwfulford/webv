@@ -1,5 +1,8 @@
 <pre>
 
+aa:
+	URI=www.robustica.co.uk/awstats/awstats.pl
+
 cl:
 	URI=www.doglin.com/awstats.html
 	min=340

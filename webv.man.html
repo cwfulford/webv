@@ -1,206 +1,149 @@
-
-<p><a href="#heading1">NAME</a><br/>
-<a href="#heading2">SYNOPSIS</a><br/>
-<a href="#heading3">AVAILABILITY</a><br/>
-<a href="#heading4">DESCRIPTION</a><br/>
-<a href="#heading5">OPTIONS</a><br/>
-<a href="#heading6">FILES</a><br/>
-<a href="#heading7">EXAMPLES</a><br/>
-<a href="#heading8">BUGS</a><br/>
-<a href="#heading9">SEE ALSO</a><br/>
-<a href="#heading10">AUTHOR</a><br/>
-<a href="#heading11">HISTORY</a><br/>
-
+<h2 id="heading1">NAME</h2>
+<p class="indent">
+<b><a href="./scripts.php?script=webv">webv</a></b>
+- reports the the number of unique visitors for the current month to date.
 </p>
-<hr/>
+<h2 id="heading2">SYNOPSIS</h2>
+<p class="indent">
 
+<b><a href="./scripts.php?script=webv">webv</a></b>
 
-<h2 id="heading1">NAME
-</h2>
+[
+<b>-c </b>
+<i>&lt;config_file&gt;</i>
+]
+[
+<b>-d</b>
+]
+[
+<b>-v </b>
+]
 
+<i>&lt;config_id&gt;</i>
+ | 
+<b>-V</b>
 
-<p style="margin-left:11%; margin-top: 1em"><b><a href="./scripts.php?script=webv">webv</a></b> -
-reports the the number of unique visitors for the current
-month to date.</p>
+<br/>
+</p>
+<h2 id="heading3">AVAILABILITY</h2>
+<p class="indent">
+<b><a href="./scripts.php?script=webv">webv</a></b>
+is a Bourne/Bash shell script which should work equally well on all versions of UNIX,
+Linux and Mac OS X.
+</p>
+<h2 id="heading4">DESCRIPTION</h2>
+<p class="indent">
+<b><a href="./scripts.php?script=webv">webv</a></b>
+uses  the configuration id as a lookup key to the configuration file
+<i>/usr/local/etc/<a href="./scripts.php?script=webv.cf">webv.cf</a></i>
+and finds the URI of an
+<b>awstats</b>
+report on a remote web server. 
+The 
+<b>URI</b>
+is used by 
+<b>wget</b>
+to fetch the report and put it on a pipe to an
+<b>awk </b>
+script which extracts the required data item and performs
+a calculation  of the average number of visitors per hour in the current
+month and the total number of unique visitors predicted by the month end.
+</p>
+<p class="indent">
+The script was written to monitor a number of websites where changes were 
+being made and checking the impact of the changes by inspection was becoming
+rather too time consuming.
+</p>
+<h2 id="heading5">OPTIONS</h2>
+<p class="indent">
+</p>
+<p class="indent">
+<b>-c</b>&nbsp;&nbsp;&nbsp;
+Use the specified configuration file in preference to the default
 
-<h2 id="heading2">SYNOPSIS
-</h2>
+<i>"/usr/local/etc/<a href="./scripts.php?script=webv.cf">webv.cf</a>"</i>
+.
+If no configuration file is found the 
+script will terminate with an error message. 
+</p>
+<p class="indent">
+<b>-d</b>&nbsp;&nbsp;&nbsp;
+Set debug mode on. 
+The 
+<b>-x</b>&nbsp;&nbsp;&nbsp;
+ option is set within the shell
+and each command in the script is echoed to the console.
+</p>
+<p class="indent">
+<b>-v</b>&nbsp;&nbsp;&nbsp;
+The usual output is just the 3 numbers repesenting the total number of
+unique visitors so far in the month, the daily average and the
+predicted outturn. With the 
+<b>-v</b>&nbsp;&nbsp;&nbsp;
+ option the output is formated and 
+labled. This is particularly useful when used with cron to report on a 
+number of different sites.
+</p>
+<p class="indent">
+&lt;
+<i>config_id</i>
+&gt;
+The configuration identity is the key to the stanza in the configuration
+file which will be used to determine the required 
+<b>URI</b>
+ for the stats
+report.
+</p>
+<p class="indent">
+<b>-V</b>&nbsp;&nbsp;&nbsp;
+Print version details and exit.
+</p>
+<h2 id="heading7">FILES</h2>
+<p class="indent">
+<i><a href="./scripts.php?script=webv.cf">webv.cf</a></i>.
+</p>
+<h2 id="heading6">EXAMPLES</h2>
+<p class="indent">
 
+</p><div class="cmdline">
+<pre>
+for key in  ai cl fc fs  t4l;do
+	webv -v $key
+done
+</pre></div>
+<p class="indent">
+</p>
+<p class="indent">
+Each id is looked up in the default configuration file
 
-<p style="margin-left:11%; margin-top: 1em"><b><a href="./scripts.php?script=webv">webv</a></b>
-[<b>-c</b> <i>&lt;config_file&gt;</i>] [<b>-d</b>]
-[<b>-v</b> ] <i>&lt;config_id&gt;</i> | <b>-V</b></p>
+<i>/usr/local/etc/<a href="./scripts.php?script=webv.cf">webv.cf</a></i>
+. Using the 
+<b>URI</b>
+ found the script
+fetches the awstats report, extracts the number of unique visitors for
+the day, calculates the daily average for the month and the predicted outturn
+at the month end. E.g.
 
-<h2 id="heading3">AVAILABILITY
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em"><b><a href="./scripts.php?script=webv">webv</a></b> is
-a Bourne/Bash shell script which should work equally well on
-all versions of UNIX, Linux and Mac OS X.</p>
-
-<h2 id="heading4">DESCRIPTION
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em"><b><a href="./scripts.php?script=webv">webv</a></b>
-uses the configuration id as a lookup key to the
-configuration file <i>/usr/local/etc/webv.cf</i> and finds
-the URI of an <b>awstats</b> report on a remote web server.
-The <b>URI</b> is used by <b>wget</b> to fetch the report
-and put it on a pipe to an <b>awk</b> script which extracts
-the required data item and performs a calculation of the
-average number of visitors per hour in the current month and
-the total number of unique visitors predicted by the month
-end.</p>
-
-<p style="margin-left:11%; margin-top: 1em">The script was
-written to monitor a number of websites where changes were
-being made and checking the impact of the changes by
-inspection was becoming rather too time consuming.</p>
-
-<h2 id="heading5">OPTIONS
-</h2>
-
-
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<colgroup><col width="11%"></col>
-<col width="3%"></col>
-<col width="4%" class="center"></col>
-<col width="82%"></col>
-</colgroup>
-<tr valign="top" align="left">
-<td></td>
-<td>
-
-
-<p style="margin-top: 1em"><b>-c</b></p></td>
-<td></td>
-<td>
-
-
-<p style="margin-top: 1em">Use the specified configuration
-file in preference to the default
-<i>&quot;/usr/local/etc/webv.cf&quot;</i>. If no
-configuration file is found the script will terminate with
-an error message.</p></td></tr>
-<tr valign="top" align="left">
-<td></td>
-<td>
-
-
-<p><b>-d</b></p></td>
-<td></td>
-<td>
-
-
-<p>Set debug mode on. The <b>-x</b> option is set within
-the shell and each command in the script is echoed to the
-console.</p> </td></tr>
-<tr valign="top" align="left">
-<td></td>
-<td>
-
-
-<p><b>-v</b></p></td>
-<td></td>
-<td>
-
-
-<p>The usual output is just the 3 numbers repesenting the
-total number of unique visitors so far in the month, the
-daily average and the predicted outturn. With the <b>-v</b>
-option the output is formated and labled. This is
-particularly useful when used with cron to report on a
-number of different sites.</p></td></tr>
-</table>
-
-<p style="margin-left:11%;">&lt;<i>config_id</i>&gt;</p>
-
-<p style="margin-left:18%;">The configuration identity is
-the key to the stanza in the configuration file which will
-be used to determine the required <b>URI</b> for the stats
-report.</p>
-
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<colgroup><col width="11%"></col>
-<col width="3%"></col>
-<col width="4%" class="center"></col>
-<col width="48%"></col>
-<col width="34%"></col>
-</colgroup>
-<tr valign="top" align="left">
-<td></td>
-<td>
-
-
-<p><b>-V</b></p></td>
-<td></td>
-<td>
-
-
-<p>Print version details and exit.</p></td>
-<td>
-</td></tr>
-</table>
-
-<h2 id="heading6">FILES
-</h2>
-
-
-
-<p style="margin-left:11%; margin-top: 1em"><i><a href="./scripts.php?script=webv.cf">webv.cf</a></i>.</p>
-
-<h2 id="heading7">EXAMPLES
-</h2>
-
-
-<p style="margin-left:22%; margin-top: 1em"><tt>for key in
-ai cl fc fs t4l;do webv -v $key done</tt></p>
-
-<p style="margin-left:11%; margin-top: 1em">Each id is
-looked up in the default configuration file
-<i>/usr/local/etc/<a href="./scripts.php?script=webv.cf">webv.cf</a></i>. Using the <b>URI</b> found
-the script fetches the awstats report, extracts the number
-of unique visitors for the day, calculates the daily average
-for the month and the predicted outturn at the month end.
-E.g.</p>
-
-<pre style="margin-left:22%; margin-top: 1em">  ai      - Visitors so far:  81  Ave:  8  Prediction: 251
-  cl      - Visitors so far: 141  Ave: 14  Prediction: 437
-  fc      - Visitors so far:  80  Ave:  8  Prediction: 248
-  fs      - Visitors so far:  26  Ave:  3  Prediction:  81
- t4l      - Visitors so far: 139  Ave: 14  Prediction: 431</pre>
-
-
-<h2 id="heading8">BUGS
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em">The script is
-quite crude and has very little, if any, error checking. The
-consequences of unexpected input are untested.</p>
-
-<h2 id="heading9">SEE ALSO
-</h2>
-
-
-
-<p style="margin-left:11%; margin-top: 1em"><a href="./scripts.php?script=webupd&amp;man=y">webupd</a>.</p>
-
-<h2 id="heading10">AUTHOR
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em">Clifford W
-Fulford, <a href="http://www.citylinux.com"
-title="Go to the City Linux homepage">
-City Linux
-</a>. Contact <a href="mailto:fulford@fulford.net" title="Send mail to Clifford W Fulford">fulford@fulford.net</a> or +44
-(0)709 229 5385.</p>
-
-<h2 id="heading11">HISTORY
-</h2>
-<hr/>
+</p><div class="cmdline">
+<pre>
+  ai 	- Visitors so far:  81  Ave:  8  Prediction: 251
+  cl 	- Visitors so far: 141  Ave: 14  Prediction: 437
+  fc 	- Visitors so far:  80  Ave:  8  Prediction: 248
+  fs 	- Visitors so far:  26  Ave:  3  Prediction:  81
+ t4l 	- Visitors so far: 139  Ave: 14  Prediction: 431
+<br/>
+</p>
+<h2 id="heading8">BUGS</h2>
+<p class="indent">
+The script is quite crude and has very little, if any,  error checking.
+The consequences of unexpected input are untested.
+</p>
+<h2 id="heading9">SEE ALSO</h2>
+<p class="indent">
+<a href="./scripts.php?script=webupd&man=y"><i>webupd</i>.</a>
+</p>
+<h2 id="heading10">AUTHOR</h2>
+<p class="indent">
+Clifford W Fulford, City Linux. Contact fulford@fulford.net or +44 (0)709 229 5385.
+</p>
+	
