@@ -1,14 +1,23 @@
 <pre>
 
 aa:
+	URI=robustica.citylinux.com/awstats.html
+
+aace:    
 	URI=www.robustica.co.uk/awstats/awstats.pl
+
+ai:
+	URI=www.interpret-tigrinya.com/awstats.html
+
+arabic:
+	URI=www.arabic-interpreter.co.uk/awstats/awstats.html
 
 cl:
 	URI=www.doglin.com/awstats.html
 	min=340
 
-t4l:
-	URI=www.steam4trains.co.uk/awstats.html
+jmf:
+	URI=joan.fulford.net/awstats.html
 
 fc:
 	URI=www.fordnet.net/awstats.html
@@ -16,11 +25,11 @@ fc:
 fs:
 	URI=www.fltime.co.uk/awstats.html
 
-ai:
-	URI=www.interpret-tigrinya.com/awstats.html
+t4l:
+	URI=www.steam4trains.co.uk/awstats.html
 
-cw:
-	URI=www.citywindowsit.com/awstats.html
+ti:
+	URI=www.tigrinya-interpreter.com/awstats.html
 
 wb:
 	URI=www.westbridgford.info/awstats.html
