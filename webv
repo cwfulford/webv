@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: webv,v 1.79 2017/01/09 20:02:27 fulford Exp fulford $
-# $Source: /src/merlin/usr/local/etc/RCS/webv,v $
-# $Revision: 1.79 $
+# $Id: webv,v 1.80 2017/04/06 11:54:12 fulford Exp fulford $
+# $Source: /src/admin/usr/local/etc/RCS/webv,v $
+# $Revision: 1.80 $
 # Author C W Fulford.
 # Copyright 2014 (c) C W Fulford.
 # Licensed for public use under the LGPL, .
@@ -9,7 +9,7 @@
 ########################################################################
 cmd=`basename $0`
 syntax="$cmd: [-d] [-v] <id>|-V"
-ver=`echo "$Id: webv,v 1.79 2017/01/09 20:02:27 fulford Exp fulford $"|awk '{print $3,$4,$5}'`
+ver=`echo "$Id: webv,v 1.80 2017/04/06 11:54:12 fulford Exp fulford $"|awk '{print $3,$4,$5}'`
 while [ $# -gt 0 ] ;do
 	case $1 in 
 		-c) config=$2;shift 2;;
@@ -49,7 +49,7 @@ tmh=`bc<<- .
 .`
 #[ $tmh -eq 0 ] && tmh=1
 
-wget -qO - $URI|sed -ne '/Viewed traffic/s/[^0-9]*\([0-9]*\).*/\1/p'|
+wget -qO - $URI|sed -ne '/Viewed traffic/s/[^0-9]*\([0-9,]*\).*/\1/p'|
 	if [ "$verbose" ];then
 		#awk '{print "'$id'" "\t- Visitors so far:" $1 "\tAve:" $1/'$days' "\tPrediction:" $1/'$days'*'$td'}'
 		awk '{printf "%4s %s %3i  %s %4.1f  %s %3.f\n","'$id'","\t- Visitors so far:",$1,"Ave:",$1/'$teh',"Prediction:",$1/'$teh'*'$tmh'}'

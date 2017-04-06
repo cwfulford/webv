@@ -17,16 +17,27 @@ cl:
 	min=340
 
 jmf:
+joan:
 	URI=joan.fulford.net/awstats.html
 
-fc:
+fcl:
+	URI=fcl.fulford.net/awstats.html
+
+fulford:
 	URI=www.fordnet.net/awstats.html
 
 fs:
 	URI=www.fltime.co.uk/awstats.html
 
+mail:
+	URI=mail.fulford.net/awstats.html
+
+photo:
+	URI=photo.fulford.net/awstats.html
+
 t4l:
-	URI=www.steam4trains.co.uk/awstats.html
+lts:
+	URI=www.linux-training-support.com/awstats.html
 
 ti:
 	URI=www.tigrinya-interpreter.com/awstats.html
@@ -34,6 +45,8 @@ ti:
 wb:
 	URI=www.westbridgford.info/awstats.html
 
+wbn:
+	URI=www.westbridgford.net/awstats.html
 ######################################################################
 # This program is free software: you can redistribute it and or      #
 # modify it under the terms of the Lesser GNU General Public License #
