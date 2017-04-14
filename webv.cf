@@ -36,10 +36,10 @@ photo:
 	URI=photo.fulford.net/awstats.html
 
 samba4:
-	URI=www.samba4.net
+	URI=www.samba4.net/awstats.html
 
 sn:
-	URI=www.systems-now.com
+	URI=www.systems-now.com/awstats.html
 
 t4l:
 lts:
