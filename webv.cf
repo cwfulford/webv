@@ -35,6 +35,12 @@ mail:
 photo:
 	URI=photo.fulford.net/awstats.html
 
+samba4:
+	URI=www.samba4.net
+
+sn:
+	URI=www.systems-now.com
+
 t4l:
 lts:
 	URI=www.linux-training-support.com/awstats.html
