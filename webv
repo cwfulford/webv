@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: webv,v 1.85 2017/04/14 07:50:40 fulford Exp fulford $
+# $Id: webv,v 1.86 2017/04/14 07:54:24 fulford Exp fulford $
 # $Source: /src/admin/usr/local/etc/RCS/webv,v $
-# $Revision: 1.85 $
+# $Revision: 1.86 $
 # Author C W Fulford.
 # Copyright 2014 (c) C W Fulford.
 # Licensed for public use under the LGPL, .
@@ -9,7 +9,7 @@
 ########################################################################
 cmd=`basename $0`
 syntax="$cmd: [-d] [-v] <id>|-V"
-ver=`echo "$Id: webv,v 1.85 2017/04/14 07:50:40 fulford Exp fulford $"|awk '{print $3,$4,$5}'`
+ver=`echo "$Id: webv,v 1.86 2017/04/14 07:54:24 fulford Exp fulford $"|awk '{print $3,$4,$5}'`
 while [ $# -gt 0 ] ;do
 	case $1 in 
 		-c) config=$2;shift 2;;
@@ -53,8 +53,9 @@ wget -qO - $URI|sed -ne '/Viewed traffic/s/[^0-9]*\([0-9,]*\).*/\1/p'|
 	sed -e 's/,//'|
 	if [ "$verbose" ];then
 		#awk '{print "'$id'" "\t- Visitors so far:" $1 "\tAve:" $1/'$days' "\tPrediction:" $1/'$days'*'$td'}'
-		awk '{while (length($1) < 7){
-			$1=$1+" "
+		awk 'id=$1
+		     {while (length(id) < 7){
+			id=id" "
 		     }
 		     printf "%4s %s %3i  %s %4.1f  %s %3.f\n","'$id'","- Visitors so far:",$1,"Ave:",$1/'$teh',"Prediction:",$1/'$teh'*'$tmh'}'
 	else
