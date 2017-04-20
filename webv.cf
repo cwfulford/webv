@@ -32,6 +32,7 @@ fs:
 mail:
 	URI=mail.fulford.net/awstats.html
 
+gallery:
 photo:
 	URI=photo.fulford.net/awstats.html
 
