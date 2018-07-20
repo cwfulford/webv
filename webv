@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Id: webv,v 1.92 2017/04/20 07:47:00 fulford Exp fulford $
+# $Id: webv,v 1.92 2017/04/20 07:47:00 fulford Exp $
 # $Source: /src/admin/usr/local/etc/RCS/webv,v $
 # $Revision: 1.92 $
 # Author C W Fulford.
@@ -9,7 +9,7 @@
 ########################################################################
 cmd=`basename $0`
 syntax="$cmd: [-d] [-v] <id>|-V"
-ver=`echo "$Id: webv,v 1.92 2017/04/20 07:47:00 fulford Exp fulford $"|awk '{print $3,$4,$5}'`
+ver=`echo "$Id: webv,v 1.92 2017/04/20 07:47:00 fulford Exp $"|awk '{print $3,$4,$5}'`
 while [ $# -gt 0 ] ;do
 	case $1 in 
 		-c) config=$2;shift 2;;
