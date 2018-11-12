@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: webv,v 1.92 2017/04/20 07:47:00 fulford Exp $
+# $Id: webv,v 1.93 2018/11/12 10:09:32 fulford Exp fulford $
 # $Source: /src/admin/usr/local/etc/RCS/webv,v $
-# $Revision: 1.92 $
+# $Revision: 1.93 $
 # Author C W Fulford.
 # Copyright 2014 (c) C W Fulford.
 # Licensed for public use under the LGPL, .
@@ -9,7 +9,7 @@
 ########################################################################
 cmd=`basename $0`
 syntax="$cmd: [-d] [-v] <id>|-V"
-ver=`echo "$Id: webv,v 1.92 2017/04/20 07:47:00 fulford Exp $"|awk '{print $3,$4,$5}'`
+ver=`echo "$Id: webv,v 1.93 2018/11/12 10:09:32 fulford Exp fulford $"|awk '{print $3,$4,$5}'`
 while [ $# -gt 0 ] ;do
 	case $1 in 
 		-c) config=$2;shift 2;;
@@ -48,6 +48,11 @@ tmh=`bc<<- .
 	scale=2;$td * 24
 .`
 #[ $tmh -eq 0 ] && tmh=1
+
+#Some remote sites require new report to be generate first.
+[ $PREFETCH ] &&{
+	wget -q $PREFETCH
+}
 
 wget -qO - $URI|sed -ne '/Viewed traffic/s/[^0-9]*\([0-9,]*\).*/\1/p'|
 	sed -e 's/,//'|

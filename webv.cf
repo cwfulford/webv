@@ -1,7 +1,8 @@
 <pre>
 
 aa:
-	URI=robustica.citylinux.com/awstats.html
+	PREFETCH=www.robustica.co.uk/awstats/
+	URI=www.robustica.co.uk/awstats/awstats.pl
 
 aace:    
 	URI=www.robustica.co.uk/awstats/awstats.pl
