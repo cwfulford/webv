@@ -2,7 +2,7 @@
 
 aa:
 	PREFETCH=www.robustica.co.uk/awstats/
-	URI=www.robustica.co.uk/awstats/awstats.pl
+	URI=www.robustica.co.uk/awstats/awstats201811.html
 
 aace:    
 	URI=www.robustica.co.uk/awstats/awstats.pl

@@ -1,17 +1,18 @@
 #!/bin/bash
-# $Id: webv,v 1.93 2018/11/12 10:09:32 fulford Exp $
+# $Id: webv,v 1.94 2018/12/04 12:22:02 fulford Exp fulford $
 # $Source: /src/admin/usr/local/etc/RCS/webv,v $
-# $Revision: 1.93 $
+# $Revision: 1.94 $
 # Author C W Fulford.
 # Copyright 2014 (c) C W Fulford.
 # Licensed for public use under the LGPL, .
 # For assistance contact fulford@fulford.net 0709 229 5385
 ########################################################################
 cmd=`basename $0`
-syntax="$cmd: [-d] [-v] <id>|-V"
-ver=`echo "$Id: webv,v 1.93 2018/11/12 10:09:32 fulford Exp $"|awk '{print $3,$4,$5}'`
+syntax="$cmd: [[-d] [-v] [<id>|-C #]}|-V"
+ver=`echo "$Id: webv,v 1.94 2018/12/04 12:22:02 fulford Exp fulford $"|awk '{print $3,$4,$5}'`
 while [ $# -gt 0 ] ;do
 	case $1 in 
+		-C) ttd=$2;shift 2;;
 		-c) config=$2;shift 2;;
 		-d) debug=:;set -x;shift;;
 		-v) verbose=:;shift;;
@@ -54,12 +55,14 @@ tmh=`bc<<- .
 	wget -q $PREFETCH
 }
 
-wget -qO - $URI|sed -ne '/Viewed traffic/s/[^0-9]*\([0-9,]*\).*/\1/p'|
-	sed -e 's/,//'|
+if [ ! $ttd ]];then
+	ttd=`wget -qO - $URI|
+		sed -ne '/Viewed traffic/s/[^0-9]*\([0-9,]*\).*/\1/p'|
+		sed -e 's/,//'`
 	if [ "$verbose" ];then
-		#awk '{print "'$id'" "\t- Visitors so far:" $1 "\tAve:" $1/'$days' "\tPrediction:" $1/'$days'*'$td'}'
-		awk -v id=$id '{
+		#awk '{print "'$id'" "\t- Visitors so far:" ttd "\tAve:" ttd/'$days' "\tPrediction:" ttd/'$days'*'$td'}'
+		awk -v id=$id -v ttd=$ttd  '{
 			printf "%7s %s %4i  %s %4.1f  %s %5.f\n",id,"- Visitors so far:",$1,"Ave:",$1/'$teh',"Prediction:",$1/'$teh'*'$tmh'}'
 	else
-		awk '{printf "%3i %4.1f %3.f\n",$1,$1/'$teh',$1/'$teh'*'$tmh'}'
+		awk -v ttd=$ttd '{printf "%3i %4.1f %3.f\n",ttd,ttd/'$teh',ttd/'$teh'*'$tmh'}'
 	fi
