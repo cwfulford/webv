@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: webv,v 1.95 2018/12/04 12:25:25 fulford Exp fulford $
+# $Id: webv,v 1.96 2018/12/05 10:41:53 fulford Exp fulford $
 # $Source: /src/admin/usr/local/etc/RCS/webv,v $
-# $Revision: 1.95 $
+# $Revision: 1.96 $
 # Author C W Fulford.
 # Copyright 2014 (c) C W Fulford.
 # Licensed for public use under the LGPL, .
@@ -9,7 +9,7 @@
 ########################################################################
 cmd=`basename $0`
 syntax="$cmd: [[-d] [-v] <id> [-C # ]] | -V"
-ver=`echo "$Id: webv,v 1.95 2018/12/04 12:25:25 fulford Exp fulford $"|awk '{print $3,$4,$5}'`
+ver=`echo "$Id: webv,v 1.96 2018/12/05 10:41:53 fulford Exp fulford $"|awk '{print $3,$4,$5}'`
 while [ $# -gt 0 ] ;do
 	case $1 in 
 		-C) ttd=$2;shift 2;;
@@ -50,19 +50,19 @@ tmh=`bc<<- .
 .`
 #[ $tmh -eq 0 ] && tmh=1
 
-#Some remote sites require new report to be generate first.
-[ $PREFETCH ] &&{
-	wget -q $PREFETCH
-}
 
-if [ ! $ttd ]];then
+if [ ! $ttd ]; then
 	ttd=`wget -qO - $URI|
 		sed -ne '/Viewed traffic/s/[^0-9]*\([0-9,]*\).*/\1/p'|
 		sed -e 's/,//'`
-	if [ "$verbose" ];then
-		#awk '{print "'$id'" "\t- Visitors so far:" ttd "\tAve:" ttd/'$days' "\tPrediction:" ttd/'$days'*'$td'}'
-		awk -v id=$id -v ttd=$ttd  '{
-			printf "%7s %s %4i  %s %4.1f  %s %5.f\n",id,"- Visitors so far:",$1,"Ave:",$1/'$teh',"Prediction:",$1/'$teh'*'$tmh'}'
-	else
-		awk -v ttd=$ttd '{printf "%3i %4.1f %3.f\n",ttd,ttd/'$teh',ttd/'$teh'*'$tmh'}'
-	fi
+fi
+
+if [ "$verbose" ];then
+	echo $ttd |
+		awk -v id=$id '{
+		printf "%7s %s %4i  %s %4.1f  %s %5.f\n",id,"- Visitors so far:",$1,"Ave:",$1/'$teh',"Prediction:",$1/'$teh'*'$tmh'}'
+else
+	echo $ttd |
+		awk '{
+		  printf "%3i %4.1f %3.f\n",$1,$1/'$teh',$1/'$teh'*'$tmh'}'
+fi
