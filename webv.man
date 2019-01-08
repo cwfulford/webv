@@ -22,17 +22,16 @@ uses  the configuration id(s) as the lookup key(s) to the configuration file
 and finds the locaton(s) of the
 .B awstats
 report(s) on a remote web server. 
-The locations
-are used by 
+The locations are used by 
 .B wget
-to fetch the report(s) to put on a pipe to an
+to fetch the report(s) to put on a pipe to a
 .B bash 
-script which extracts the required data item(s) and performs
-calculations to fid the average number of visitors per minute in the current
-month and predicted the total number of unique visitors by the month end.
+script which extracts the total number of unique visitor in the month
+to date and calculates the average number of visitors per minute 
+and the predicted total(s) for the month end.
 .LP
 The script was written to monitor a number of websites where changes were 
-being made to routinely check the impact of the changes.
+being made in order to routinely check the impact of the changes.
 .SH OPTIONS
 .TP 5
 .B -c
@@ -72,15 +71,13 @@ Print version details and exit.
 .ft R
 .LP
 Each id is looked up in the default configuration file
-\fI/usr/local/etc/webv.cf\fR. Using the \fBURI\fR found the script
-fetches the awstats report, extracts the number of unique visitors for
-the day, calculates the daily average for the month and the predicted outturn
-at the month end. E.g.
+\fI/usr/local/etc/webv.cf\fR. Using the location found the script
+fetches the awstats reports, extracts the number of unique visitors for
+the month to date, calculates the daily average for the month and the
+predicted total for the month end. E.g.
 .IP
 .nf
 .ft CW
-   $: webv -v ai cl fcl fs t4l
-
                        Website   Visitors   Average Prediction
    www.amharic-interpreter.com       46       5.33      165
              www.citylinux.com      319      37.58     1165
@@ -113,7 +110,14 @@ order . E.g.
 .fi
 .LP
 .SH BUGS
-The script is quite crude and has very little, if any,  error checking.
+The script calculate the predicted total from the average number of visits
+per minute at the time of invocation. At the start of the month the
+number of unique visitors is close to the total number of visits. As the
+month progress the difference between visitor and unique visitors increaes.
+It is for this reason that the predicted numbers tends to be exagerated
+at the month start and becomes progressively more accurate.
+.LP
+The script is utilitarian and has very little, if any,  error checking.
 The consequences of unexpected input are untested.
 .SH SEE ALSO
 .IR webupd .
