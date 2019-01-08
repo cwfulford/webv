@@ -86,6 +86,7 @@ predicted total for the month end. E.g.
         www.training4linux.com       44       5.18      161
 .ft R
 .fi
+.IP
 .ft CW
 	webv -v  -s ai cl fc fs  t4l
 .ft R
@@ -99,7 +100,6 @@ order . E.g.
 .IP
 .nf
 .ft CW
-
                        Website   Visitors   Average Prediction
        www.flare-support.co.uk     3543     417.89    12955
                fcl.fulford.net      432      50.83     1576
