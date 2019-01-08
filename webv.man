@@ -68,7 +68,17 @@ Print version details and exit.
 .IP
 .ft CW
 	$: webv -v  ai cl fc fs  t4l
+.IP
+.nf
+.ft CW
+                       Website   Visitors   Average Prediction
+   www.amharic-interpreter.com       46       5.33      165
+             www.citylinux.com      319      37.58     1165
+               fcl.fulford.net      432      50.83     1576
+       www.flare-support.co.uk     3543     417.89    12955
+        www.training4linux.com       44       5.18      161
 .ft R
+.fi
 .LP
 Each id is looked up in the default configuration file
 \fI/usr/local/etc/webv.cf\fR. Using the location found the script
@@ -76,20 +86,19 @@ fetches the awstats reports, extracts the number of unique visitors for
 the month to date, calculates the daily average for the month and the
 predicted totals for the month end. E.g.
 .IP
+.ft CW
+	$: webv -v  -s ai cl fc fs  t4l
+.IP
 .nf
 .ft CW
                        Website   Visitors   Average Prediction
-   www.amharic-interpreter.com       46       5.33      165
-             www.citylinux.com      319      37.58     1165
-               fcl.fulford.net      432      50.83     1576
        www.flare-support.co.uk     3543     417.89    12955
+               fcl.fulford.net      432      50.83     1576
+             www.citylinux.com      319      37.58     1165
+   www.amharic-interpreter.com       46       5.33      165
         www.training4linux.com       44       5.18      161
 .ft R
 .fi
-.IP
-.ft CW
-	$: webv -v  -s ai cl fc fs  t4l
-.ft R
 .LP
 Each id is looked up in the default configuration file
 \fI/usr/local/etc/webv.cf\fR. Using the \fBlocation\fR found the script
@@ -97,17 +106,6 @@ fetches the awstats reports, extracts the number of unique visitors in
 the current month, calculates the daily average and the predicted total
 for the month end as above but sorts the result is reverse numerical
 order . E.g.
-.IP
-.nf
-.ft CW
-                       Website   Visitors   Average Prediction
-       www.flare-support.co.uk     3543     417.89    12955
-               fcl.fulford.net      432      50.83     1576
-             www.citylinux.com      319      37.58     1165
-   www.amharic-interpreter.com       46       5.33      165
-        www.training4linux.com       44       5.18      161
-.ft R
-.fi
 .LP
 .SH BUGS
 The script calculate the predicted total from the average number of visits
