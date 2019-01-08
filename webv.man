@@ -83,7 +83,7 @@ Each id is looked up in the default configuration file
 \fI/usr/local/etc/webv.cf\fR. Using the location found the script
 fetches the awstats reports, extracts the number of unique visitors for
 the month to date, calculates the daily average for the month and the
-predicted totals for the month end. E.g.
+predicted totals for the month end.
 .IP
 .ft CW
 .nf
@@ -103,7 +103,7 @@ Each id is looked up in the default configuration file
 fetches the awstats reports, extracts the number of unique visitors in
 the current month, calculates the daily average and the predicted total
 for the month end as above but sorts the result is reverse numerical
-order . E.g.
+order.
 .LP
 .SH BUGS
 The script calculate the predicted total from the average number of visits
