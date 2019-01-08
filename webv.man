@@ -67,14 +67,14 @@ Print version details and exit.
 .SH EXAMPLES
 .IP
 .ft CW
-	webv -v  ai cl fc fs  t4l
+	$: webv -v  ai cl fc fs  t4l
 .ft R
 .LP
 Each id is looked up in the default configuration file
 \fI/usr/local/etc/webv.cf\fR. Using the location found the script
 fetches the awstats reports, extracts the number of unique visitors for
 the month to date, calculates the daily average for the month and the
-predicted total for the month end. E.g.
+predicted totals for the month end. E.g.
 .IP
 .nf
 .ft CW
@@ -88,7 +88,7 @@ predicted total for the month end. E.g.
 .fi
 .IP
 .ft CW
-	webv -v  -s ai cl fc fs  t4l
+	$: webv -v  -s ai cl fc fs  t4l
 .ft R
 .LP
 Each id is looked up in the default configuration file
