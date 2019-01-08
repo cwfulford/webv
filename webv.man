@@ -68,9 +68,7 @@ Print version details and exit.
 .SH EXAMPLES
 .IP
 .ft CW
-for key in  ai cl fc fs  t4l;do
-	webv -v $key
-done
+	webv -v  ai cl fc fs  t4l
 .ft R
 .LP
 Each id is looked up in the default configuration file
@@ -81,13 +79,39 @@ at the month end. E.g.
 .IP
 .nf
 .ft CW
-  ai 	- Visitors so far:  81  Ave:  8  Prediction: 251
-  cl 	- Visitors so far: 141  Ave: 14  Prediction: 437
-  fc 	- Visitors so far:  80  Ave:  8  Prediction: 248
-  fs 	- Visitors so far:  26  Ave:  3  Prediction:  81
- t4l 	- Visitors so far: 139  Ave: 14  Prediction: 431
+   $: webv -v ai cl fcl fs t4l
+
+                       Website   Visitors   Average Prediction
+   www.amharic-interpreter.com       46       5.33      165
+             www.citylinux.com      319      37.58     1165
+               fcl.fulford.net      432      50.83     1576
+       www.flare-support.co.uk     3543     417.89    12955
+        www.training4linux.com       44       5.18      161
 .ft R
 .fi
+.ft CW
+	webv -v  -s ai cl fc fs  t4l
+.ft R
+.LP
+Each id is looked up in the default configuration file
+\fI/usr/local/etc/webv.cf\fR. Using the \fBlocation\fR found the script
+fetches the awstats reports, extracts the number of unique visitors in
+the current month, calculates the daily average and the predicted total
+for the month end as above but sorts the result is reverse numerical
+order . E.g.
+.IP
+.nf
+.ft CW
+
+                       Website   Visitors   Average Prediction
+       www.flare-support.co.uk     3543     417.89    12955
+               fcl.fulford.net      432      50.83     1576
+             www.citylinux.com      319      37.58     1165
+   www.amharic-interpreter.com       46       5.33      165
+        www.training4linux.com       44       5.18      161
+.ft R
+.fi
+.LP
 .SH BUGS
 The script is quite crude and has very little, if any,  error checking.
 The consequences of unexpected input are untested.
