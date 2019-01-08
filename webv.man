@@ -1,4 +1,4 @@
-.TH WEBV 8l "27th March r1.95
+.TH WEBV 8l "27th March r1.8
 .SH NAME
 .B webv
 - reports the the number of unique visitors for the current month to date.
@@ -6,8 +6,10 @@
 \fBwebv\fR
 [\fB-c \fI<config_file>\fR]
 [\fB-d\fR]
+[\fB-s\fR]
 [\fB-v \fR]
-\fI<config_id>\fR | \fB-V\fR
+\fI<config_id>\fR 
+[\fI<config_id> ...\fR] | \fB-V\fR
 .br
 .SH AVAILABILITY
 .B webv
@@ -15,24 +17,22 @@ is a Bourne/Bash shell script which should work equally well on all versions of 
 Linux and Mac OS X.
 .SH DESCRIPTION
 .B webv
-uses  the configuration id as a lookup key to the configuration file
+uses  the configuration id(s) as the lookup key(s) to the configuration file
 .I /usr/local/etc/webv.cf
-and finds the URI of an
+and finds the locaton(s) of the
 .B awstats
-report on a remote web server. 
-The 
-.B URI
-is used by 
+report(s) on a remote web server. 
+The locations
+are used by 
 .B wget
-to fetch the report and put it on a pipe to an
-.B awk 
-script which extracts the required data item and performs
-a calculation  of the average number of visitors per hour in the current
-month and the total number of unique visitors predicted by the month end.
+to fetch the report(s) to put on a pipe to an
+.B bash 
+script which extracts the required data item(s) and performs
+calculations to fid the average number of visitors per minute in the current
+month and predicted the total number of unique visitors by the month end.
 .LP
 The script was written to monitor a number of websites where changes were 
-being made and checking the impact of the changes by inspection was becoming
-rather too time consuming.
+being made to routinely check the impact of the changes.
 .SH OPTIONS
 .TP 5
 .B -c
@@ -45,6 +45,9 @@ script will terminate with an error message.
 Set debug mode on. 
 The \fB-x\fR option is set within the shell
 and each command in the script is echoed to the console.
+.TP 5
+.B -s
+The output is sorted in reverse numerical order. 
 .TP 5
 .B -v
 The usual output is just the 3 numbers repesenting the total number of

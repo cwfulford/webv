@@ -1,60 +1,90 @@
 <pre>
 
-aa:
-	PREFETCH=www.robustica.co.uk/awstats/
-	URI=www.robustica.co.uk/awstats/awstats201811.html
-
 aace:    
-	URI=www.robustica.co.uk/awstats/awstats.pl
+	STATSRVR=http://www.robustica.co.uk
+	LOC=/awstats/awstats.pl
+	URI=www.robustica.co.uk
 
 ai:
-	URI=www.interpret-tigrinya.com/awstats.html
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/ai/awstats.html
+	URI=www.interpret-tigrinya.com
+
 
 arabic:
-	URI=www.arabic-interpreter.co.uk/awstats/awstats.html
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/arabic/awstats.html
+	URI=www.arabic-interpreter.co.uk
 
 cl:
-	URI=www.doglin.com/awstats.html
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/cl/awstats.html
+	URI=www.doglin.com
 	min=340
 
 jmf:
 joan:
-	URI=joan.fulford.net/awstats.html
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/joan/awstats.html
+	URI=joan.fulford.net
 
 fcl:
-	URI=fcl.fulford.net/awstats.html
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/fcl/awstats.html
+	URI=fcl.fulford.net
 
 fulford:
-	URI=www.fordnet.net/awstats.html
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/fulford/awstats.html
+	URI=www.fordnet.net
 
 fs:
-	URI=www.fltime.co.uk/awstats.html
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/fs/awstats.html
+	URI=www.fltime.co.uk
+
+genealogy:
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/genealogy/awstats.html
+	URI=genealogy.fulford.net
 
 mail:
-	URI=mail.fulford.net/awstats.html
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/mail/awstats.html
+	URI=mail.fulford.net
 
 gallery:
 photo:
-	URI=photo.fulford.net/awstats.html
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/gallery/awstats.html
+	URI=gallery.fulford.net
 
 samba4:
-	URI=www.samba4.net/awstats.html
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/samba4/awstats.html
+	URI=www.samba4.com
 
 sn:
-	URI=www.systems-now.com/awstats.html
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/sn/awstats.html
+	URI=www.systems-now.com
 
 t4l:
 lts:
-	URI=www.linux-training-support.com/awstats.html
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/t4l/awstats.html
+	URI=www.training4linux.com
 
 ti:
-	URI=www.tigrinya-interpreter.com/awstats.html
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/ti/awstats.html
+	URI=www.doglin.com
 
-wb:
-	URI=www.westbridgford.info/awstats.html
 
 wbn:
-	URI=www.westbridgford.net/awstats.html
+	STATSRVR=http://www.citylinux.com
+	LOC=/stats/wbn/awstats.html
+	URI=www.westbridgford.net
 ######################################################################
 # This program is free software: you can redistribute it and or      #
 # modify it under the terms of the Lesser GNU General Public License #
