@@ -16,11 +16,17 @@
 <b>-d</b>
 ]
 [
+<b>-s</b>
+]
+[
 <b>-v </b>
 ]
 
 <i>&lt;config_id&gt;</i>
- | 
+ 
+[
+<i>&lt;config_id&gt; ...</i>
+] | 
 <b>-V</b>
 
 <br/>
@@ -34,25 +40,22 @@ Linux and Mac OS X.
 <h2 id="heading4">DESCRIPTION</h2>
 <p class="indent">
 <b><a href="./scripts.php?script=webv">webv</a></b>
-uses  the configuration id as a lookup key to the configuration file
+uses  the configuration id(s) as the lookup key(s) to the configuration file
 <i>/usr/local/etc/<a href="./scripts.php?script=webv.cf">webv.cf</a></i>
-and finds the URI of an
+and finds the locaton(s) of the
 <b>awstats</b>
-report on a remote web server. 
-The 
-<b>URI</b>
-is used by 
+report(s) on a remote web server. 
+The locations are used by 
 <b>wget</b>
-to fetch the report and put it on a pipe to an
-<b>awk </b>
-script which extracts the required data item and performs
-a calculation  of the average number of visitors per hour in the current
-month and the total number of unique visitors predicted by the month end.
+to fetch the report(s) to put on a pipe to a
+<b>bash </b>
+script which extracts the total number of unique visitor in the month
+to date and calculates the average number of visitors per minute 
+and the predicted total(s) for the month end.
 </p>
 <p class="indent">
 The script was written to monitor a number of websites where changes were 
-being made and checking the impact of the changes by inspection was becoming
-rather too time consuming.
+being made in order to routinely check the impact of the changes.
 </p>
 <h2 id="heading5">OPTIONS</h2>
 <p class="indent">
@@ -73,6 +76,10 @@ The
 <b>-x</b>&nbsp;&nbsp;&nbsp;
  option is set within the shell
 and each command in the script is echoed to the console.
+</p>
+<p class="indent">
+<b>-s</b>&nbsp;&nbsp;&nbsp;
+The output is sorted in reverse numerical order. 
 </p>
 <p class="indent">
 <b>-v</b>&nbsp;&nbsp;&nbsp;
@@ -108,9 +115,35 @@ Print version details and exit.
 <p class="indent">
 </p><div class="cmdline">
 <pre>
-for key in  ai cl fc fs  t4l;do
-	webv -v $key
-done
+	$: webv -v  ai cl fc fs  t4l
+</pre></div>
+<p class="indent">
+</p>
+<p class="indent">
+Each id is looked up in the default configuration file
+
+<i>/usr/local/etc/<a href="./scripts.php?script=webv.cf">webv.cf</a></i>
+. Using the location found the script
+fetches the awstats reports, extracts the number of unique visitors for
+the month to date, calculates the daily average for the month and the
+predicted totals for the month end. E.g.
+</p>
+<p class="indent">
+</p><div class="cmdline">
+<pre>
+                       Website   Visitors   Average Prediction
+   www.amharic-interpreter.com       46       5.33      165
+             www.citylinux.com      319      37.58     1165
+               fcl.fulford.net      432      50.83     1576
+       www.flare-support.co.uk     3543     417.89    12955
+        www.training4linux.com       44       5.18      161
+</pre></div>
+<p class="indent">
+</p>
+<p class="indent">
+</p><div class="cmdline">
+<pre>
+	$: webv -v  -s ai cl fc fs  t4l
 </pre></div>
 <p class="indent">
 </p>
@@ -119,26 +152,38 @@ Each id is looked up in the default configuration file
 
 <i>/usr/local/etc/<a href="./scripts.php?script=webv.cf">webv.cf</a></i>
 . Using the 
-<b>URI</b>
+<b>location</b>
  found the script
-fetches the awstats report, extracts the number of unique visitors for
-the day, calculates the daily average for the month and the predicted outturn
-at the month end. E.g.
+fetches the awstats reports, extracts the number of unique visitors in
+the current month, calculates the daily average and the predicted total
+for the month end as above but sorts the result is reverse numerical
+order . E.g.
 </p>
 <p class="indent">
 </p><div class="cmdline">
 <pre>
-  ai 	- Visitors so far:  81  Ave:  8  Prediction: 251
-  cl 	- Visitors so far: 141  Ave: 14  Prediction: 437
-  fc 	- Visitors so far:  80  Ave:  8  Prediction: 248
-  fs 	- Visitors so far:  26  Ave:  3  Prediction:  81
- t4l 	- Visitors so far: 139  Ave: 14  Prediction: 431
+                       Website   Visitors   Average Prediction
+       www.flare-support.co.uk     3543     417.89    12955
+               fcl.fulford.net      432      50.83     1576
+             www.citylinux.com      319      37.58     1165
+   www.amharic-interpreter.com       46       5.33      165
+        www.training4linux.com       44       5.18      161
 </pre></div>
+<p class="indent">
+</p>
 <p class="indent">
 </p>
 <h2 id="heading8">BUGS</h2>
 <p class="indent">
-The script is quite crude and has very little, if any,  error checking.
+The script calculate the predicted total from the average number of visits
+per minute at the time of invocation. At the start of the month the
+number of unique visitors is close to the total number of visits. As the
+month progress the difference between visitor and unique visitors increaes.
+It is for this reason that the predicted numbers tends to be exagerated
+at the month start and becomes progressively more accurate.
+</p>
+<p class="indent">
+The script is utilitarian and has very little, if any,  error checking.
 The consequences of unexpected input are untested.
 </p>
 <h2 id="heading9">SEE ALSO</h2>
