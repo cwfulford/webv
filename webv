@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: webv,v 1.9 2019/01/08 23:10:04 fulford Exp $
+# $Id: webv,v 1.10 2019/02/28 09:50:03 fulford Exp fulford $
 # $Source: /src/admin/usr/local/etc/RCS/webv,v $
-# $Revision: 1.9 $
+# $Revision: 1.10 $
 # Author C W Fulford.
 # Copyright 2014 (c) C W Fulford.
 # Licensed for public use under the LGPL, .
@@ -9,7 +9,7 @@
 ########################################################################
 cmd=`basename $0`
 syntax="$cmd: [[-d] [-v] <id> [-C # ]] | -V"
-ver=`echo "$Id: webv,v 1.9 2019/01/08 23:10:04 fulford Exp $"|awk '{print $3,$4,$5}'`
+ver=`echo "$Id: webv,v 1.10 2019/02/28 09:50:03 fulford Exp fulford $"|awk '{print $3,$4,$5}'`
 while [ $# -gt 0 ] ;do
 	case $1 in 
 		-C) ttd=$2;shift 2;;
@@ -102,7 +102,7 @@ for site in $sites ;do
 		.
 	`
 	perDay=`bc <<- .
-		scale=3
+		scale=4
 		$ave * 60 * 24 
 		.
 	`
